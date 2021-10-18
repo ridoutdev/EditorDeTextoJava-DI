@@ -1,30 +1,24 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package com.mycompany.editornotepad;
-
+/**/
 import java.awt.Color;
 import java.awt.Font;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 /**
- *
- * @author RidO
- */
+ ** @author Ridouan Tieb
+ **/
 public class Editor extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Editor
-     */
     public Editor() {
         initComponents();
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -34,10 +28,17 @@ public class Editor extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        frameBuscArchivo = new javax.swing.JFrame();
+        buscArchivo = new javax.swing.JFileChooser();
+        jFrame1 = new javax.swing.JFrame();
+        alumno = new javax.swing.JOptionPane();
         jPanel1 = new javax.swing.JPanel();
         escribe = new javax.swing.JScrollPane();
         escribiendo = new javax.swing.JTextPane();
         jPanel3 = new javax.swing.JPanel();
+        acerca = new javax.swing.JButton();
+        tamano = new javax.swing.JLabel();
+        ubica = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         archivo = new javax.swing.JMenu();
         abrir = new javax.swing.JMenuItem();
@@ -59,7 +60,48 @@ public class Editor extends javax.swing.JFrame {
         azul = new javax.swing.JMenuItem();
         jSeparator7 = new javax.swing.JPopupMenu.Separator();
         verde = new javax.swing.JMenuItem();
-        acercade = new javax.swing.JMenu();
+
+        javax.swing.GroupLayout frameBuscArchivoLayout = new javax.swing.GroupLayout(frameBuscArchivo.getContentPane());
+        frameBuscArchivo.getContentPane().setLayout(frameBuscArchivoLayout);
+        frameBuscArchivoLayout.setHorizontalGroup(
+            frameBuscArchivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 582, Short.MAX_VALUE)
+            .addGroup(frameBuscArchivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(frameBuscArchivoLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(buscArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        frameBuscArchivoLayout.setVerticalGroup(
+            frameBuscArchivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 399, Short.MAX_VALUE)
+            .addGroup(frameBuscArchivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(frameBuscArchivoLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(buscArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+
+        javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
+        jFrame1.getContentPane().setLayout(jFrame1Layout);
+        jFrame1Layout.setHorizontalGroup(
+            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jFrame1Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(alumno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        jFrame1Layout.setVerticalGroup(
+            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jFrame1Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(alumno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("NotePad-RiduDev");
@@ -75,24 +117,47 @@ public class Editor extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(escribe, javax.swing.GroupLayout.DEFAULT_SIZE, 489, Short.MAX_VALUE)
+            .addComponent(escribe, javax.swing.GroupLayout.DEFAULT_SIZE, 473, Short.MAX_VALUE)
         );
+
+        acerca.setText("Acerca de");
+        acerca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                acercaActionPerformed(evt);
+            }
+        });
+
+        tamano.setText("Tamaño: ");
+
+        ubica.setText("Ubicación: ");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(tamano, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(ubica, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(acerca))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(acerca, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ubica, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(tamano, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         archivo.setText("Archivo");
 
         abrir.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        abrir.setText("Abrir");
+        abrir.setText("Abrir archivo");
         abrir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 abrirActionPerformed(evt);
@@ -102,7 +167,7 @@ public class Editor extends javax.swing.JFrame {
         archivo.add(jSeparator1);
 
         guardar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        guardar.setText("Guardar");
+        guardar.setText("Guardar ");
         guardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 guardarActionPerformed(evt);
@@ -187,9 +252,6 @@ public class Editor extends javax.swing.JFrame {
 
         jMenuBar1.add(fuente);
 
-        acercade.setText("Acerca de");
-        jMenuBar1.add(acercade);
-
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -204,7 +266,8 @@ public class Editor extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -239,19 +302,82 @@ public class Editor extends javax.swing.JFrame {
     }//GEN-LAST:event_verdeActionPerformed
 
     private void abrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abrirActionPerformed
-        File f = new File("archivo.txt");
-        try {
-            BufferedReader br = new BufferedReader(new FileReader(f));
-            String s;
-            while ((s = br.readLine()) != null) {
-                escribiendo.setText(s);    
-            }
-        } catch (IOException ex) {}
+     
+        JFileChooser abrirArchivo = new JFileChooser();
+        
+        abrirArchivo.showOpenDialog(this);
+        
+        File f = abrirArchivo.getSelectedFile();
+        String path = f.getAbsolutePath();
+        String contenido = getContenido(path);
+        escribiendo.setText(contenido);
+        
+       
+        f = abrirArchivo.getCurrentDirectory();
+        String fullpath = f.getParent();
+        ubica.setText(fullpath);
+  
     }//GEN-LAST:event_abrirActionPerformed
 
     private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
-
+        
+        JFileChooser guardarArchivo = new JFileChooser();
+        
+        int seleccion = guardarArchivo.showSaveDialog(this);
+        
+        if (seleccion == JFileChooser.APPROVE_OPTION){
+        File f =  new File(guardarArchivo.getSelectedFile().getAbsolutePath());
+        
+        try {                    
+                    FileWriter wr = new FileWriter(f, false);
+                  
+                    BufferedWriter w = new BufferedWriter(wr);
+                    
+                    if(f.exists()){
+		    if(JOptionPane.YES_OPTION == JOptionPane.showConfirmDialog
+                    (buscArchivo,"El fichero existe,deseas reemplazarlo?",
+                    "Sobreescribir Archivo",JOptionPane.YES_NO_OPTION)){
+                        
+                    w.write(escribiendo.getText());
+                    w.flush();
+                    w.close(); }
+                    }
+                    }catch (IOException ex) {
+                    JOptionPane.showMessageDialog(escribiendo, ex.getMessage());
+                }              
+            }    
     }//GEN-LAST:event_guardarActionPerformed
+
+    private void acercaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acercaActionPerformed
+        JOptionPane.showMessageDialog(rootPane, "Ridouan Abdellah Tieb","ALUMNO"
+                                      , JOptionPane.CLOSED_OPTION);    
+    }//GEN-LAST:event_acercaActionPerformed
+    
+    public String getContenido(String path){
+        FileReader fr;
+        BufferedReader br = null;
+        String contenido = "";
+        try {
+               fr = new FileReader(path);
+               br = new BufferedReader(fr);
+
+               String linea;
+               while((linea=br.readLine())!=null){
+               contenido += linea + "\n";
+            }
+               return contenido;
+
+                } catch (FileNotFoundException e) {
+                } catch (IOException e) {
+                }finally{
+                          try{
+                               br.close();
+                            }catch(IOException e){
+                            }
+                        }
+                        return contenido;
+            }
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -286,14 +412,18 @@ public class Editor extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem abrir;
-    private javax.swing.JMenu acercade;
+    private javax.swing.JButton acerca;
+    private javax.swing.JOptionPane alumno;
     private javax.swing.JMenu archivo;
     private javax.swing.JMenuItem azul;
+    private javax.swing.JFileChooser buscArchivo;
     private javax.swing.JMenu color;
     private javax.swing.JScrollPane escribe;
     private javax.swing.JTextPane escribiendo;
+    private javax.swing.JFrame frameBuscArchivo;
     private javax.swing.JMenu fuente;
     private javax.swing.JMenuItem guardar;
+    private javax.swing.JFrame jFrame1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
@@ -306,10 +436,13 @@ public class Editor extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator7;
     private javax.swing.JMenuItem rojo;
     private javax.swing.JMenuItem salir;
+    private javax.swing.JLabel tamano;
     private javax.swing.JMenu tamaño;
     private javax.swing.JMenuItem tamaño1;
     private javax.swing.JMenuItem tamaño2;
     private javax.swing.JMenuItem tamaño3;
+    private javax.swing.JLabel ubica;
     private javax.swing.JMenuItem verde;
     // End of variables declaration//GEN-END:variables
+
 }
